@@ -13,10 +13,10 @@
 </head>
 <body>
 
-  <!-- ================= COLOR BENDS CANVAS BACKGROUND ================= -->
+  <!-- Background Shader Canvas -->
   <canvas id="color-bends-canvas"></canvas>
 
-  <!-- ================= STATUS BAR ================= -->
+  <!-- Status Bar -->
   <header class="status-bar">
     <div class="wrap">
       <div class="status-live">
@@ -34,7 +34,7 @@
     </div>
   </header>
 
-  <!-- ================= MOBILE OVERLAY ================= -->
+  <!-- Mobile Overlay -->
   <div class="mobile-overlay" id="mobile-overlay">
     <div class="mobile-overlay-top">
       <span class="mono-label">NAVIGATION</span>
@@ -52,18 +52,16 @@
     </div>
   </div>
 
-  <!-- ================= HERO ================= -->
+  <!-- Hero Section -->
   <section class="hero">
     <div class="wrap hero-wrap">
       
-      <!-- Left: Portrait Frame -->
       <div class="hero-portrait-col reveal">
         <div class="portrait-container">
           <img src="profile.jpg" alt="Rain Regencia" class="dithered-portrait">
         </div>
       </div>
 
-      <!-- Right: Main Intro -->
       <div class="hero-content-col reveal">
         <h1 class="hero-title-large">Rain Regencia</h1>
 
@@ -80,7 +78,6 @@
 
     </div>
 
-    <!-- Bottom: Metrics Grid -->
     <div class="wrap">
       <div class="metrics-grid reveal">
         <div class="metric-block">
@@ -103,7 +100,7 @@
     </div>
   </section>
 
-  <!-- ================= 01 — FEATURED SYSTEMS ================= -->
+  <!-- Featured Projects -->
   <section class="section" id="projects">
     <div class="wrap">
       <div class="section-head reveal">
@@ -112,7 +109,6 @@
       </div>
 
       <div class="projects-grid">
-
         <article class="project-card reveal">
           <div class="reticle">
             <span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span>
@@ -150,12 +146,11 @@
           </div>
           <a href="#" class="project-link">VIEW PROJECT <span class="arrow">↗</span></a>
         </article>
-
       </div>
     </div>
   </section>
 
-  <!-- ================= 02 — STACK ================= -->
+  <!-- Technical Stack -->
   <section class="section" id="stack">
     <div class="wrap">
       <div class="section-head reveal">
@@ -164,7 +159,6 @@
       </div>
 
       <div class="stack-grid">
-
         <div class="stack-block reveal">
           <div class="stack-block-head">
             <span class="idx">A.</span>
@@ -202,62 +196,11 @@
             <li>Machine Learning</li>
           </ul>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ================= 03 — EXPERIENCE ================= -->
-  <section class="section" id="experience">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="index-tag">03 // EXPERIENCE &amp; AFFILIATIONS</div>
-        <h2 class="section-title">Track Record</h2>
-      </div>
-
-      <div class="exp-columns">
-
-        <div class="reveal">
-          <div class="exp-col-label">Leadership &amp; Academics</div>
-          <div class="timeline-item">
-            <div class="timeline-date">2025 — PRESENT</div>
-            <div>
-              <div class="timeline-role">Founder &amp; Managing Director</div>
-              <div class="timeline-org">RA!N Systems &amp; Studio</div>
-              <p class="timeline-details">Developing custom brand identities, technical systems layout, and digital design collateral for business ventures.</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-date">2024 — PRESENT</div>
-            <div>
-              <div class="timeline-role">IT Student, BSIT 3-1</div>
-              <div class="timeline-org">Information Technology Program</div>
-              <p class="timeline-details">Specializing in integrative programming, software architecture, relational databases, and network setup.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="reveal">
-          <div class="exp-col-label">Industry Summits</div>
-          <div class="affil-item">
-            <span class="affil-name">WOCEE 2026 Builder Showcase</span>
-            <span class="affil-meta">World of Consumer Electronics Expo · SMX</span>
-          </div>
-          <div class="affil-item">
-            <span class="affil-name">GrowthCon 2026</span>
-            <span class="affil-meta">SM Aura</span>
-          </div>
-          <div class="affil-item">
-            <span class="affil-name">Go Negosyo MSME Summit &amp; SEC Caravan</span>
-            <span class="affil-meta">Delegate &amp; Tech Participant</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= 04 — CONTACT ================= -->
+  <!-- Contact Section -->
   <section class="section" id="contact" style="border-bottom: none;">
     <div class="wrap">
       <div class="section-head reveal">
@@ -298,91 +241,8 @@
     </div>
   </footer>
 
-  <!-- WebGL Three.js Engine Library -->
+  <!-- WebGL Library and Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  
-  <!-- UI Interactions Script -->
   <script src="script.js"></script>
-
-  <!-- Inline WebGL Shader Engine for ColorBends Background -->
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const canvas = document.getElementById('color-bends-canvas');
-      if (!canvas || typeof THREE === 'undefined') return;
-
-      const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-      const scene = new THREE.Scene();
-      const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-
-      const material = new THREE.ShaderMaterial({
-        uniforms: {
-          uTime: { value: 0 },
-          uColor: { value: new THREE.Color('#A855F7') },
-          uSpeed: { value: 0.2 },
-          uFrequency: { value: 1.0 },
-          uNoise: { value: 0.15 },
-          uBandWidth: { value: 0.14 },
-          uIntensity: { value: 1.3 },
-          uFadeTop: { value: 0.75 }
-        },
-        vertexShader: `
-          varying vec2 vUv;
-          void main() {
-            vUv = uv;
-            gl_Position = vec4(position, 1.0);
-          }
-        `,
-        fragmentShader: `
-          uniform float uTime;
-          uniform vec3 uColor;
-          uniform float uSpeed;
-          uniform float uFrequency;
-          uniform float uNoise;
-          uniform float uBandWidth;
-          uniform float uIntensity;
-          uniform float uFadeTop;
-          varying vec2 vUv;
-
-          float rand(vec2 n) { 
-            return fract(sin(dot(n, vec2(12.9898, 4.1414))) * 43758.5453);
-          }
-
-          void main() {
-            vec2 st = vec2(vUv.y, 1.0 - vUv.x);
-            float t = uTime * uSpeed;
-            float wave = sin(st.x * uFrequency * 6.28318 + t) * uBandWidth;
-            float noiseVal = (rand(st + vec2(t)) - 0.5) * uNoise;
-            
-            float dist = abs(st.y - 0.5 + wave + noiseVal);
-            float bend = smoothstep(uBandWidth, 0.0, dist) * uIntensity;
-            
-            float fade = smoothstep(1.0, 1.0 - uFadeTop, vUv.y);
-            vec3 finalColor = uColor * bend * fade;
-
-            gl_FragColor = vec4(finalColor, bend * fade * 0.85);
-          }
-        `,
-        transparent: true
-      });
-
-      const geometry = new THREE.PlaneGeometry(2, 2);
-      const mesh = new THREE.Mesh(geometry, material);
-      scene.add(mesh);
-
-      function animate(time) {
-        material.uniforms.uTime.value = time * 0.001;
-        renderer.render(scene, camera);
-        requestAnimationFrame(animate);
-      }
-      requestAnimationFrame(animate);
-
-      window.addEventListener('resize', () => {
-        renderer.setSize(window.innerWidth, window.innerHeight);
-      });
-    });
-  </script>
 </body>
 </html>
