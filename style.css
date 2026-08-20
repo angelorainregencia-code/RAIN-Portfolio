@@ -1,7 +1,5 @@
 /* ==========================================================================
-   RAIN REGENCIA — "TACTICAL CYBER-EXECUTIVE"
-   Fusion: Bryl Lim precision (dark, hairline, monospace metadata)
-         + Boss Rod impact (massive display type, neon accent, bold CTAs)
+   RAIN REGENCIA — "TACTICAL CYBER-EXECUTIVE" (BRYL LIM INSPIRATION)
    ========================================================================== */
 
 :root {
@@ -42,17 +40,9 @@ body {
   background: var(--bg);
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
-  background-image:
-    linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 64px 64px;
-  background-attachment: fixed;
-  background-position: center top;
-  background-blend-mode: normal;
   position: relative;
 }
 
-/* faint grid fades out toward page edges so it reads as texture, not noise */
 body::before {
   content: '';
   position: fixed;
@@ -65,7 +55,7 @@ body::before {
 ::selection { background: var(--cyan); color: var(--bg); }
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 0; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); }
 
 a { color: inherit; text-decoration: none; }
 
@@ -79,7 +69,6 @@ a { color: inherit; text-decoration: none; }
   .wrap { padding-inline: 3rem; }
 }
 
-/* ---------- shared micro-label / eyebrow register ---------- */
 .mono-label {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -107,7 +96,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ==========================================================================
-   STATUS BAR / HEADER
+   STATUS BAR
    ========================================================================== */
 
 .status-bar {
@@ -226,115 +215,135 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ==========================================================================
-   HERO
+   HERO (BRYL LIM STYLE)
    ========================================================================== */
 
 .hero {
   position: relative;
-  padding: 5rem 0 4.5rem;
+  padding: 4rem 0 0;
   border-bottom: 1px solid var(--border);
 }
 
-.hero-kicker {
-  display: flex;
+.hero-wrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
   align-items: center;
-  gap: 0.6rem;
+}
+
+@media (min-width: 860px) {
+  .hero-wrap {
+    grid-template-columns: 320px 1fr;
+    gap: 4rem;
+  }
+}
+
+.portrait-container {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.dithered-portrait {
+  width: 100%;
+  height: auto;
+  max-height: 380px;
+  object-fit: cover;
+  filter: none;
+  border-radius: 8px;
+  border: 1px solid var(--border-strong);
+}
+
+.hero-title-large {
   font-family: var(--font-mono);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--cyan);
+  font-size: clamp(2.5rem, 5vw, 4.2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
   margin-bottom: 1.5rem;
 }
-
-.hero-kicker .bracket { color: var(--ink-faint); }
-
-.hero-headline {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-  max-width: 900px;
-}
-
-.hero-headline .accent { color: var(--cyan); }
 
 .hero-sub {
   font-family: var(--font-mono);
   font-size: 15px;
-  line-height: 1.75;
+  line-height: 1.8;
   color: var(--ink-dim);
-  max-width: 38rem;
-  margin-top: 1.75rem;
+  max-width: 36rem;
+  margin-bottom: 1.75rem;
 }
 
-.hero-sub strong { color: var(--ink); font-weight: 400; }
+.hero-sub strong, .hero-sub b {
+  color: var(--ink);
+  font-weight: 700;
+}
 
-.metrics-bar {
+.hero-social-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-top: 2.25rem;
-}
-
-.metric-chip {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--ink-dim);
-  border: 1px solid var(--border-strong);
-  padding: 0.4rem 0.85rem;
-  white-space: nowrap;
-}
-
-.metric-chip::before { content: '// '; color: var(--ink-faint); }
-
-.cta-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 2.75rem;
-}
-
-.btn {
+  gap: 1.5rem;
   font-family: var(--font-mono);
   font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.09em;
-  padding: 1rem 1.75rem;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  transition: transform 0.25s var(--ease-snap), box-shadow 0.25s var(--ease-out), background 0.25s var(--ease-out), border-color 0.25s var(--ease-out);
+  text-transform: lowercase;
+  color: var(--ink-dim);
 }
 
-.btn-primary {
-  background: var(--cyan);
-  color: var(--bg);
-  border: 1px solid var(--cyan);
-  box-shadow: 0 0 0 0 rgba(0, 240, 255, 0);
+.hero-social-links a {
+  transition: color 0.2s var(--ease-out);
+  border-bottom: 1px solid transparent;
 }
 
-.btn-primary:hover {
-  box-shadow: 0 0 24px 2px rgba(0, 240, 255, 0.45);
-  transform: translateY(-2px);
-}
-
-.btn-ghost {
-  background: transparent;
-  color: var(--ink);
-  border: 1px solid var(--border-strong);
-}
-
-.btn-ghost:hover {
-  border-color: var(--cyan);
+.hero-social-links a:hover {
   color: var(--cyan);
-  transform: translateY(-2px);
+  border-color: var(--cyan);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid var(--border);
+  margin-top: 3.5rem;
+}
+
+@media (min-width: 768px) {
+  .metrics-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.metric-block {
+  padding: 1.25rem 1rem;
+  border-right: 1px solid var(--border);
+}
+
+.metric-block:last-child {
+  border-right: none;
+}
+
+@media (max-width: 767px) {
+  .metric-block:nth-child(2n) {
+    border-right: none;
+  }
+  .metric-block:nth-child(1), .metric-block:nth-child(2) {
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+.metric-num {
+  font-family: var(--font-mono);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.25rem;
+}
+
+.metric-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-faint);
 }
 
 /* ==========================================================================
@@ -346,9 +355,7 @@ a { color: inherit; text-decoration: none; }
   border-bottom: 1px solid var(--border);
 }
 
-.section-head {
-  margin-bottom: 2.5rem;
-}
+.section-head { margin-bottom: 2.5rem; }
 
 .section-title {
   font-family: var(--font-display);
@@ -382,13 +389,6 @@ a { color: inherit; text-decoration: none; }
   flex-direction: column;
   transition: border-color 0.3s var(--ease-out), transform 0.4s var(--ease-snap), box-shadow 0.3s var(--ease-out);
 }
-
-/* HUD reticle corners — the signature detail. Hidden at rest, snap into
-   view on hover like a targeting lock, tying the tech-military metaphor
-   to the "systems" framing of the copy. */
-.project-card::before,
-.project-card::after,
-.corner-tl, .corner-br { display: none; }
 
 .project-card .reticle span {
   position: absolute;
@@ -434,7 +434,6 @@ a { color: inherit; text-decoration: none; }
 }
 
 .project-badge.crimson { border-color: var(--crimson); color: var(--crimson); }
-
 .project-year { font-family: var(--font-mono); font-size: 11px; color: var(--ink-faint); }
 
 .project-name {
@@ -488,7 +487,6 @@ a { color: inherit; text-decoration: none; }
 }
 
 .project-link:hover { color: var(--cyan); border-color: var(--cyan); }
-
 .project-link .arrow { transition: transform 0.25s var(--ease-snap); }
 .project-link:hover .arrow { transform: translate(3px, -3px); }
 
@@ -628,20 +626,8 @@ a { color: inherit; text-decoration: none; }
 }
 
 .affil-item:first-child { border-top: none; padding-top: 0; }
-
-.affil-name {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  color: var(--ink);
-}
-
-.affil-meta {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--ink-faint);
-}
+.affil-name { font-family: var(--font-mono); font-size: 13px; color: var(--ink); }
+.affil-meta { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); }
 
 /* ==========================================================================
    04 — CONTACT / TERMINAL
